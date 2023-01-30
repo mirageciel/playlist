@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Playlist</title>
+        <link href="./playlist.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <h1>♬ Playlist</h1>
+        <div class="container">
+            <select id="playlist" onchange="display()">
+                <option value="default">― Select a Song ―</option>
+                <option value="king">Lauren Aquilina - King</option>
+                <option value="wisconsin">Madilyn Bailey - Wisconsin</option>
+                <option value="whiteBlood">Oh Wonder - White Blood</option>
+            </select>
+
+            <table class="information" id="information">
+                <thead>
+                    <th id="track"></th>
+                    <th id="artist"></th>
+                    <th id="album"></th>
+                    <th id="time"></th>
+                </thead>
+            </table>
+
+            <p class="playButton" id="play"></p>
+            <p class="audioControl" id="song"></p>
+            <p class="resetButton" id="reset"></p>
+            <p class="coverImage" id="coverImage"></p>
+        </div>
+
+        <script>
+
+            var selectedObject = document.getElementById("playlist");
+
+            var song = document.getElementById("play");
+            var playButton = document.createElement("button");
+            playButton.innerHTML = "▶ Play";
+
+            var reset = document.getElementById("reset");
+            var resetButton = document.createElement("button");
+            resetButton.innerHTML = "<b>↺</b> Reset";
+
+            var table = document.getElementById("information");
+
+            function display() {
+                var x = document.getElementById("playlist").value;
+
+                for (child of song.children) {
+                    song.removeChild(child);
+                }
+                for (child of reset.children) {
+                    reset.removeChild(child);
+                }
+
+                if (table.rows.length > 1) table.deleteRow(-1);
+                document.getElementById("song").innerHTML = "";
+
+                if (x == "default") {
+                    document.getElementById("track").innerHTML = "";
+                    document.getElementById("artist").innerHTML = "";
+                    document.getElementById("album").innerHTML = "";
+                    document.getElementById("time").innerHTML = "";
+                    document.getElementById("coverImage").innerHTML = "";
+                }
+                else {
+                    document.getElementById("track").innerHTML = "TRACK";
+                    document.getElementById("artist").innerHTML = "ARTIST";
+                    document.getElementById("album").innerHTML = "ALBUM";
+                    document.getElementById("time").innerHTML = "TIME";
+
+                    var row = table.insertRow();
+                    var col0 = row.insertCell(0)
+                    var col1 = row.insertCell(1);
+                    var col2 = row.insertCell(2);
+                    var col3 = row.insertCell(3);
+
+                    song.appendChild(playButton);
+                    reset.appendChild(resetButton);
+
+                    resetButton.onclick = function() {
+                        selectedObject.selectedIndex = "0";
+                        display();
+                    }
+
+                    if (x == "king") {
+                        col0.innerHTML = "King";
+                        col1.innerHTML = "Lauren Aquilina";
+                        col2.innerHTML = "Fools";
+                        col3.innerHTML = "3:58";
+
+                        document.getElementById("coverImage").innerHTML = 
+                            '<img src="../Exercise7_Images/king.jpg" alt="cover image">'
+
+                        playButton.onclick = function() {
+                            document.getElementById("song").innerHTML =
+                                '<audio controls autoplay src="../Exercise7_Audio/King.mp3" type="audio/mpeg">';
+                        }
+                    }
+
+                    else if (x == "wisconsin") {
+                        col0.innerHTML = "Wisconsin";
+                        col1.innerHTML = "Madilyn Bailey";
+                        col2.innerHTML = "-";
+                        col3.innerHTML = "3:41";
+
+                        document.getElementById("coverImage").innerHTML = 
+                            '<img src="../Exercise7_Images/wisconsin.jpg" alt="cover image">'
+
+                        playButton.onclick = function() {
+                            document.getElementById("song").innerHTML =
+                                '<audio controls autoplay src="../Exercise7_Audio/Wisconsin.mp3" type="audio/mpeg">';
+                        }
+                    }
+
+                    else if (x == "whiteBlood") {
+                        col0.innerHTML = "White Blood";
+                        col1.innerHTML = "Oh Wonder";
+                        col2.innerHTML = "White Blood";
+                        col3.innerHTML = "4:17";
+
+                        document.getElementById("coverImage").innerHTML = 
+                            '<img src="../Exercise7_Images/white blood.jpg" alt="cover image">'
+
+                        playButton.onclick = function() {
+                            document.getElementById("song").innerHTML =
+                                '<audio controls autoplay src="../Exercise7_Audio/White Blood.mp3" type="audio/mpeg">';
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

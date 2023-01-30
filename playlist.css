@@ -1,0 +1,83 @@
+body {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+h1 {
+    color: darkorange;
+}
+
+select {
+    grid-area: select;
+    text-align: center;
+    height: 30px;
+    background-color: antiquewhite;
+    border-color: firebrick;
+    color: firebrick;
+}
+
+.information {
+    grid-area: information;
+}
+.playButton {
+    grid-area: playButton;
+}
+.audioControl {
+    grid-area: audioControl;
+}
+.resetButton {
+    grid-area: resetButton;
+}
+.coverImage {
+    grid-area: coverImage;
+}
+
+.coverImage img {
+    max-width: 40%;
+    min-width: auto;
+    border-radius: 10%;
+}
+
+.information th {
+    font-weight: normal;
+    font-size: 11pt;
+    color: sandybrown;
+}
+
+.information td {
+    font-weight: bold;
+    border-top: solid;
+    border-color: peachpuff;
+    color: darkorange;
+}
+
+.information {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "select select select select"
+        "playButton playButton resetButton resetButton"
+        "coverImage coverImage coverImage coverImage"
+        "information information information information"
+        "audioControl audioControl audioControl audioControl"
+        ;
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.playButton button {
+    background-color: bisque;
+    border-color: antiquewhite;
+    color: royalblue;
+}
+
+.resetButton button {
+    background-color: bisque;
+    border-color: antiquewhite;
+    color: firebrick;
+}
